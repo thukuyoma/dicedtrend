@@ -48,15 +48,15 @@ export default function Register() {
 					<SocialAuth>
 						<h1 className="auth-title">Register</h1>
 						<div className="social-holder f-color">
-							<i class="fa fa-facebook-official"></i>
+							<i className="fa fa-facebook-official"></i>
 							Register with Facebook
 						</div>
 						<div className="social-holder g-color">
-							<i class="fa fa-google"></i>
+							<i className="fa fa-google"></i>
 							Register with Google
 						</div>
 						<div className="social-holder t-color">
-							<i class="fa fa-twitter"></i>
+							<i className="fa fa-twitter"></i>
 							Register with Twitter
 						</div>
 					</SocialAuth>

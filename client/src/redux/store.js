@@ -32,8 +32,3 @@ store.subscribe(() => {
 });
 
 export const persistor = persistStore(store);
-// export default () => {
-// 	store;
-// 	let persistor = persistStore(store);
-// 	return { store, persistor };
-// };
