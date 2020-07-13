@@ -1,16 +1,16 @@
 {
-  "name": "devconnector",
+  "name": "dicedtrend",
   "version": "1.0.0",
-  "description": "Social network for developers",
+  "description": "Technology blog",
   "main": "server.js",
   "scripts": {
     "start": "node server",
     "server": "nodemon server ",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "author": "Brad Traversy",
+  "author": "Theophilus Ukuyoma",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
