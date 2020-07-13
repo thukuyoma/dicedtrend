@@ -102,7 +102,7 @@ export default function Profile() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getUserPosts());
-	}, [getUserPosts, dispatch]);
+	}, [dispatch]);
 
 	const posts = useSelector((state) => state.post.userPosts);
 	const user = useSelector((state) => state.auth.user);
@@ -134,23 +134,13 @@ export default function Profile() {
 					</div>
 					<div className="name">
 						<h1>{user.name}</h1>
-						<i class="fas fa-cog"></i>
+						<i className="fas fa-cog"></i>
 					</div>
+					<h5>Bio</h5>
 					<p className="bio">
-						<h5>Bio</h5>
 						Kind of a good samaritan, terrible athlete, but extremely blessed in
 						the napping skills department.
 					</p>
-					{/* <div className="social-container">
-						<div className="social-count">
-							<span className="count">10K</span>
-							<span className="count-name"> 100k Followers</span>
-						</div>
-						<div className="social-count">
-							<span className="count">0</span>
-							<span className="count-name">100K Fellowing</span>
-						</div>
-					</div> */}
 				</ProfileStyled>
 				{posts.length < 0 ? (
 					<Fragment>
@@ -165,7 +155,7 @@ export default function Profile() {
 						</p>
 						<section>
 							{posts.map((post) => (
-								<UserPostCard post={post} />
+								<UserPostCard key={post._id} post={post} />
 							))}
 						</section>
 					</Fragment>

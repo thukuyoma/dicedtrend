@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { getSinglePost } from '../../redux/actions/postActions';
-import { connect } from 'react-redux';
-import { Main, Frame, Aside } from '../assets/Layout';
+import { Main, Frame } from '../assets/Layout';
 import Moment from 'react-moment';
 import Header from '../layout/navigation/Header';
 import Footer from '../layout/navigation/Footer';
@@ -9,7 +8,6 @@ import Footer from '../layout/navigation/Footer';
 import styled from 'styled-components';
 import Comment from '../layout/comment/Comment';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import Spinner from '../assets/Spinner';
 
 const Article = styled.section`
@@ -81,7 +79,7 @@ function Post({ match }) {
 	const isLoading = useSelector((state) => state.post.loading);
 	useEffect(() => {
 		dispatch(getSinglePost(id));
-	}, []);
+	}, [id, dispatch]);
 
 	return (
 		<Fragment>
@@ -149,9 +147,5 @@ function Post({ match }) {
 		</Fragment>
 	);
 }
-Post.propTypes = {
-	getSinglePost: PropTypes.func.isRequired,
-	post: PropTypes.object.isRequired,
-};
 
 export default Post;

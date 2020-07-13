@@ -90,7 +90,6 @@ export default function AccountContainer({ user }) {
 				<img
 					className="avatar"
 					src={`/images/profile/${user.avatar}`}
-					// src="https://source.unsplash.com/random/70x70"
 					alt="dicedtrend user profile account"
 				/>
 				<div className="user-details">
@@ -102,35 +101,35 @@ export default function AccountContainer({ user }) {
 			<div className="shortcuts">
 				<div className="link-container">
 					<StyledLink to="/profile">
-						<i class="far fa-user"></i>
+						<i className="far fa-user"></i>
 						<span className="shortcut-link">Profile</span>
 					</StyledLink>
 				</div>
 				<div className="link-container">
 					<StyledLink to="/create-post">
-						<i class="fas fa-pencil-alt"></i>
+						<i className="fas fa-pencil-alt"></i>
 						<span className="shortcut-link">Write a post</span>
 					</StyledLink>
 				</div>
 				<div className="link-container">
 					<StyledLink to="/">
-						<i class="far fa-clipboard"></i>
+						<i className="far fa-clipboard"></i>
 						<span className="shortcut-link">My post</span>
 					</StyledLink>
 				</div>
 				<div className="link-container">
 					<StyledLink to="/">
-						<i class="far fa-user"></i>
+						<i className="far fa-user"></i>
 						<span className="shortcut-link">Help</span>
 					</StyledLink>
 				</div>
 				<div className="link-container">
-					<i class="fas fa-cog"></i>
+					<i className="fas fa-cog"></i>
 					<span className="shortcut-link">Settings</span>
 				</div>
 				<div className="link-container" onClick={onLogout}>
-					<StyledLink>
-						<i class="fas fa-arrow-right"></i>
+					<StyledLink to='/'>
+						<i className="fas fa-arrow-right"></i>
 						<span className="shortcut-link">Logout</span>
 					</StyledLink>
 				</div>

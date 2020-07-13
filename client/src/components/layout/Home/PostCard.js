@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import authorAvatar from '../../../images/authorAvatar.png';
 import Moment from 'react-moment';
 import moment from 'moment';
 import StyledLink from '../../assets/StyledLink';

@@ -2,11 +2,10 @@ import React, { Fragment, useState } from 'react';
 import { Main } from '../assets/Layout';
 import { Button } from '../assets/Button';
 import { StyledInput } from '../assets/StyledInput';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Header from '../layout/navigation/Header';
 import Footer from '../layout/navigation/Footer';
-import { Redirect } from 'react-router-dom';
 import { createPost } from '../../redux/actions/postActions';
 
 const StyledCreatePost = styled.div`
@@ -91,7 +90,7 @@ export default function CreatePost() {
 			dispatch(createPost(formData));
 		}
 	};
-	const isLoading = useSelector((state) => state.post.loading);
+	// const isLoading = useSelector((state) => state.post.loading);
 	// if (!isLoading) return <Redirect to={`/profile`} />;
 	return (
 		<Fragment>
@@ -113,7 +112,7 @@ export default function CreatePost() {
 										/>
 									) : (
 										<div className="image-uploader">
-											<i class="far fa-image"></i>{' '}
+											<i className="far fa-image"></i>{' '}
 											<span>Upload post photo</span>
 										</div>
 									)}

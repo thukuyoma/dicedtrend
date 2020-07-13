@@ -21,7 +21,7 @@ export default function SubHeading({ heading }) {
 		<StyledSubHeading>
 			<div className="heading">
 				<h1>{heading}</h1>
-				<spam className="underline" />
+				<span className="underline" />
 			</div>
 		</StyledSubHeading>
 	);

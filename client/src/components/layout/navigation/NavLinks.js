@@ -1,6 +1,5 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadUser } from '../../../redux/actions/authActions';
 import AccountContainer from '../profile/AccountContainer';
 import StyledLink from '../../assets/StyledLink';
 import { StyledNav } from './StyledNav';
@@ -9,9 +8,6 @@ import { showSearchBox } from '../../../redux/actions/assetActions';
 function NavLinks() {
 	const [hoverShow, setHoverShow] = useState(false);
 	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(loadUser());
-	}, []);
 	const user = useSelector((state) => state.auth.user);
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const handleHover = () => {
@@ -54,7 +50,6 @@ function NavLinks() {
 							<Fragment>
 								<img
 									src={`/images/profile/${user.avatar}`}
-									// src="https://source.unsplash.com/random/30x30"
 									alt="dicedtrend user profile account"
 									onClick={handleHover}
 								/>
@@ -65,7 +60,7 @@ function NavLinks() {
 						) : (
 							<Fragment>
 								<i
-									class="far fa-user-circle"
+									className="far fa-user-circle"
 									// onMouseOver={handleHover}
 									// onMouseOut={handleHover}
 									onClick={handleHover}
@@ -73,13 +68,13 @@ function NavLinks() {
 								<div className={`auth-links hover hover-show-${hoverShow}`}>
 									<div>
 										<StyledLink to="/login">
-											<i class="fas fa-sign-in-alt"></i>Login
+											<i className="fas fa-sign-in-alt"></i>Login
 										</StyledLink>
 									</div>
 									<br />
 									<div>
 										<StyledLink to="/register">
-											<i class="fas fa-user-plus"></i>Register
+											<i className="fas fa-user-plus"></i>Register
 										</StyledLink>
 									</div>
 								</div>

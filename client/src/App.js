@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/pages/Home';
 import Post from './components/pages/Post';
 import CreatePost from './components/pages/CreatePost';
-import Upload from './components/pages/Upload';
 import Alert from './components/assets/Alert';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
@@ -31,7 +30,6 @@ function App() {
 				<Route eaxct path="/posts/:id" component={Post} />
 				<Route eaxct path="/profile" component={Profile} />
 				<Route eaxct path="/create-post/" component={CreatePost} />
-				<Route eaxct path="/upload/" component={Upload} />
 				<Route eaxct path="/account-container/" component={AccountContainer} />
 				<Route eaxct path="/edit-post/:user_post_id" component={EditPost} />
 				<Route eaxct path="/search-result" component={SearchResult} />

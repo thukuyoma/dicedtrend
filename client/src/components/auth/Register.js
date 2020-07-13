@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { LoginSection, SocialAuth, RegularAuth } from './RegisterStyle';
 import { Main } from '../assets/Layout';
 import preloader from '../assets/preloader.gif';
 import { Button } from '../assets/Button';
 import { register } from '../../redux/actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
-import StyledLink from '../assets/StyledLink'
+import StyledLink from '../assets/StyledLink';
 
 export default function Register() {
 	const [registerFormData, setRegisterFormData] = useState({
@@ -19,21 +19,10 @@ export default function Register() {
 	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const dispatch = useDispatch();
 
-	const [checkbox, setCheckbox] = useState({ isChecked: false });
-
 	const [buttonLoading, setButtonLoading] = useState({ isLoading: false });
 	const { isLoading } = buttonLoading;
 
 	const { name, email, password, password2 } = registerFormData;
-	const { isChecked } = checkbox;
-
-	const toggleCheckbox = (e) => {
-		// setCheckbox({
-		// 	...checkbox,
-		// 	isChecked: e.target.value,
-		// });
-		// console.log(checkbox);
-	};
 
 	const onChange = (e) => {
 		setRegisterFormData({
@@ -111,8 +100,6 @@ export default function Register() {
 									className="checkbox"
 									type="checkbox"
 									name="check"
-									onChange={toggleCheckbox}
-									checked={isChecked}
 								/>
 								<span className="checkbox-terms ">
 									By registering you agree to the terms and policies govering

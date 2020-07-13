@@ -7,6 +7,7 @@ import {
 } from './types';
 import axios from 'axios';
 import { setAlert } from './alertActions';
+
 //load User
 export const loadUser = () => async (dispatch) => {
 	try {
@@ -15,7 +16,6 @@ export const loadUser = () => async (dispatch) => {
 			type: USER_LOADED,
 			payload: res.data,
 		});
-		dispatch(loadUser());
 	} catch (err) {
 		throw err;
 	}
@@ -48,7 +48,6 @@ export const register = (name, email, password) => async (dispatch) => {
 
 //Login User
 export const login = (email, password) => async (dispatch) => {
-	console.log('User logged in');
 	const config = {
 		headers: {
 			'Content-type': 'application/json',

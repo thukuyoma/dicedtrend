@@ -88,7 +88,6 @@ export const getUserPosts = () => async (dispatch) => {
 			type: GET_USER_POSTS,
 			payload: res.data,
 		});
-		console.log(res.data);
 	} catch (err) {}
 };
 
@@ -127,7 +126,6 @@ export const getSearchResult = (query) => async (dispatch) => {
 	try {
 		const res = await axios(`/profile/search/${query}`);
 		dispatch({ type: GET_SEARCHED_POST, payload: res.data });
-		console.log(res.data);
 	} catch (error) {
 		console.log(error);
 	}

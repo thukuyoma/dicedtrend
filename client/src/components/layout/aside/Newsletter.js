@@ -45,7 +45,7 @@ export default function Newsletter() {
 
 	return (
 		<StyledNewsletter>
-			<i class="fas fa-envelope-open-text"></i>
+			<i className="fas fa-envelope-open-text"></i>
 			<p>Subscribe to our mailing list to get the new updates!</p>
 			<StyledInput>
 				<form onSubmit={onSubmit}>

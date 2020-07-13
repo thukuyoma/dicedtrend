@@ -1,12 +1,10 @@
 import React, { Fragment, useState } from 'react';
 import { Main, Frame } from '../assets/Layout';
 import { Button } from '../assets/Button';
-import { StyledInput } from '../assets/StyledInput';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import Header from '../layout/navigation/Header';
 import Footer from '../layout/navigation/Footer';
-import { setAlert } from '../../redux/actions/alertActions';
 import { editUserPost } from '../../redux/actions/postActions';
 import { Redirect } from 'react-router-dom';
 

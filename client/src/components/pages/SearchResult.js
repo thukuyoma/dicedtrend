@@ -1,14 +1,13 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import Header from '../layout/navigation/Header';
 import Footer from '../layout/navigation/Footer';
 import { Main, Frame, Aside } from '../assets/Layout';
 import { PostCard } from '../layout/Home/PostCard';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import Spinner from '../assets/Spinner';
 // import { showSearchBox } from '../../redux/actions/assetActions';
 export default function SearchResult() {
 	const searchedPost = useSelector((state) => state.post.searchedPosts);
-	const dispatch = useDispatch();
 
 	return (
 		<Fragment>
@@ -20,7 +19,7 @@ export default function SearchResult() {
 						<Fragment>
 							<h4>These posts match your search query</h4>
 							{searchedPost.map((post) => (
-								<PostCard post={post} />
+								<PostCard key={post._id} post={post} />
 							))}
 						</Fragment>
 					) : (

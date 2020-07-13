@@ -11,11 +11,7 @@ const StyledAd = styled.div`
 export default function Ad() {
 	return (
 		<StyledAd>
-			<img
-				className="ad-poster"
-				src="/images/advert/poster.jpg"
-				// src="https://source.unsplash.com/random/200x200"
-			/>
+			<img className="ad-poster" src="/images/advert/poster.jpg" alt="" />
 		</StyledAd>
 	);
 }

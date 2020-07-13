@@ -93,7 +93,7 @@ export default function Search() {
 							onBlur={(e) => (e.target.placeholder = 'Search dicedpost ...')}
 						/>
 						<button>
-							<i class="fas fa-search"></i>
+							<i className="fas fa-search"></i>
 						</button>
 					</form>
 				</div>

@@ -42,26 +42,24 @@ const Alert = () => {
 		alerts !== null &&
 		alerts.length > 0 &&
 		alerts.map((alert) => (
-			<Fragment>
-				<div key={alert.id}>
-					<StyledALert>
-						<div className={`alert-${alert.alertType}`}>
-							<div className={`alert`}>
-								{`${alert.message}`}
-								<span
-									onClick={dispatch(removeAlert(alert.id))}
-									style={{
-										paddingLeft: '20px',
-										color: 'white',
-										fontWeight: 'bold',
-									}}
-								>
-									x
-								</span>
-							</div>
+			<Fragment key={alert.id}>
+				<StyledALert>
+					<div className={`alert-${alert.alertType}`}>
+						<div className={`alert`}>
+							{`${alert.message}`}
+							<span
+								onClick={dispatch(removeAlert(alert.id))}
+								style={{
+									paddingLeft: '20px',
+									color: 'white',
+									fontWeight: 'bold',
+								}}
+							>
+								x
+							</span>
 						</div>
-					</StyledALert>
-				</div>
+					</div>
+				</StyledALert>
 			</Fragment>
 		));
 	return <div>{alert}</div>;

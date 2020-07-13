@@ -85,7 +85,7 @@ export default function PostCard({ post }) {
 	};
 	return (
 		<Fragment>
-			<StyledPostCard profile>
+			<StyledPostCard>
 				<div className="post-card-wrapper">
 					<div className="post-thumbnail">
 						<StyledLink to={`/posts/${post._id}`}>

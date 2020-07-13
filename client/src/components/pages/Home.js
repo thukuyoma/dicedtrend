@@ -14,7 +14,6 @@ import Slider from '../layout/aside/Slider';
 import CatList from '../layout/aside/CatList';
 import Newsletter from '../layout/aside/Newsletter';
 import PopularPost from '../layout/aside/PopularPost';
-import Search from '../layout/navigation/Search';
 import SubHeading from '../layout/aside/SubHeading';
 const Hero = styled.div`
 	display: grid;
@@ -29,7 +28,7 @@ function Home() {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(getPosts());
-	}, [getPosts]);
+	}, [dispatch]);
 
 	const posts = useSelector((state) => state.post.posts);
 	return (

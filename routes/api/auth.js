@@ -6,9 +6,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const checkToken = require('../../middleware/checkToken');
 
-// @route    GET auth/user
 // @desc     load user on token verification
-// @access   Public
 router.get('/user', checkToken, async (req, res) => {
 	try {
 		let user = await User.findById(req.user.id).select('-password -__v -date');
@@ -19,8 +17,6 @@ router.get('/user', checkToken, async (req, res) => {
 });
 
 // @route    POST /users/register
-// @desc     Register user
-// @access   Public
 router.post(
 	'/register',
 	[
@@ -71,9 +67,6 @@ router.post(
 );
 
 // @route    POST auth/login
-// @desc     Login user
-// @access   Public
-
 router.post(
 	'/login',
 	[check('email').isEmail(), check('password').isLength({ min: 5 })],
