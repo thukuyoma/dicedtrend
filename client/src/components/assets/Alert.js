@@ -1,0 +1,70 @@
+import React, { Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { removeAlert } from '../../redux/actions/alertActions';
+
+const StyledALert = styled.div`
+	section {
+		background: #f4f4f4;
+		color: #333;
+		@media only screen and (min-width: 320px) {
+			padding: 0 15px;
+		}
+		@media only screen and (max-width: 1000px) {
+			padding: 0 15px;
+		}
+	}
+	.alert {
+		max-width: 760px;
+		padding: 0.8rem;
+		margin: 1rem 0;
+		opacity: 0.9;
+		font-size: 12px;
+		margin: auto;
+	}
+	.alert-success {
+		background: #28a745;
+		color: #fff;
+	}
+	.alert-danger {
+		background: #dc3545;
+		color: #fff;
+	}
+	span {
+		float: right;
+	}
+`;
+
+const Alert = () => {
+	const dispatch = useDispatch();
+	const alerts = useSelector((state) => state.alerts);
+	const alert =
+		alerts !== null &&
+		alerts.length > 0 &&
+		alerts.map((alert) => (
+			<Fragment>
+				<div key={alert.id}>
+					<StyledALert>
+						<div className={`alert-${alert.alertType}`}>
+							<div className={`alert`}>
+								{`${alert.message}`}
+								<span
+									onClick={dispatch(removeAlert(alert.id))}
+									style={{
+										paddingLeft: '20px',
+										color: 'white',
+										fontWeight: 'bold',
+									}}
+								>
+									x
+								</span>
+							</div>
+						</div>
+					</StyledALert>
+				</div>
+			</Fragment>
+		));
+	return <div>{alert}</div>;
+};
+
+export default Alert;
