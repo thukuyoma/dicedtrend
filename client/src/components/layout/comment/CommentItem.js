@@ -64,7 +64,7 @@ export default function CommentItem({
 						{commentPoster._id === user && (
 							<Fragment>
 								<span className="delete-comment" onClick={onDelete}>
-									<i class="far fa-trash-alt"></i>
+									<i className="far fa-trash-alt"></i>
 								</span>
 							</Fragment>
 						)}

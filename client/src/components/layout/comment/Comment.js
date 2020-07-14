@@ -11,9 +11,7 @@ export default function Comment({ postId, comments }) {
 				<p>Be the first to comment your thought</p>
 			) : (
 				comments.map((comment) => (
-					<div>
-						<CommentItem key={comment._id} comment={comment} postId={postId} />
-					</div>
+					<CommentItem key={comment._id} comment={comment} postId={postId} />
 				))
 			)}
 		</div>
