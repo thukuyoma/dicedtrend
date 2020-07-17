@@ -59,12 +59,7 @@ function NavLinks() {
 							</Fragment>
 						) : (
 							<Fragment>
-								<i
-									className="far fa-user-circle"
-									// onMouseOver={handleHover}
-									// onMouseOut={handleHover}
-									onClick={handleHover}
-								></i>
+								<i className="far fa-user-circle" onClick={handleHover}></i>
 								<div className={`auth-links hover hover-show-${hoverShow}`}>
 									<div>
 										<StyledLink to="/login">

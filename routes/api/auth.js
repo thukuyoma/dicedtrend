@@ -40,8 +40,9 @@ router.post(
 			user = new User({ name, email, password });
 			const salt = await bcrypt.genSalt(10);
 			user.password = await bcrypt.hash(password, salt);
+			const avatar = 'default.svg';
+			user.avatar = avatar;
 			await user.save();
-
 			const payload = {
 				user: {
 					id: user.id,
