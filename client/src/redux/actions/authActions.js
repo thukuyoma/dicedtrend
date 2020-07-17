@@ -23,7 +23,6 @@ export const loadUser = () => async (dispatch) => {
 
 // Register User
 export const register = (name, email, password) => async (dispatch) => {
-	console.log('User register in');
 	const config = {
 		headers: {
 			'Content-Type': 'application/json',
@@ -31,7 +30,6 @@ export const register = (name, email, password) => async (dispatch) => {
 	};
 
 	const body = JSON.stringify({ name, email, password });
-	console.log(body);
 	try {
 		const res = await axios.post('auth/register', body, config);
 
@@ -68,13 +66,16 @@ export const login = (email, password) => async (dispatch) => {
 	}
 };
 
+
+//logout
 export const logout = () => (dispatch) => {
-	// console.log('you are now logged out');
 	dispatch(loadUser());
 	dispatch({ type: LOGOUT_USER });
 	dispatch(setAlert('You are now logged out', 'success'));
 };
 
+
+//update profile avatar
 export const updateAvatar = (formData) => async (dispatch) => {
 	const config = {
 		headers: {

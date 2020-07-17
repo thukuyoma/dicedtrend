@@ -23,12 +23,12 @@ const StyledALert = styled.div`
 		margin: auto;
 	}
 	.alert-success {
-		background: #28a745;
-		color: #fff;
+		color: #155724;
+		background-color: #d4edda;
 	}
 	.alert-danger {
-		background: #dc3545;
-		color: #fff;
+		color: #721c24;
+		background-color: #f8d7da;
 	}
 	span {
 		float: right;

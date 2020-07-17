@@ -125,10 +125,9 @@ router.post('/update-avatar', [checkToken], async (req, res) => {
 		user.avatar = avatar.name;
 		await user.save();
 		return res.json(avatar.name);
-		// res.send(user);
 	} catch (err) {
 		console.log(err);
 	}
-	// res.send('Avatar update');
+	
 });
 module.exports = router;
