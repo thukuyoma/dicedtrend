@@ -1,31 +1,26 @@
 import styled from 'styled-components';
 
 export const Main = styled.section`
-	max-width: 540px;
 	min-height: 60vh;
+	max-width: 600px;
 	margin: 30px auto;
 	@media only screen and (max-width: 500px) {
 		padding: 0 15px;
+		margin-right: 0;
 	}
 `;
 
 export const Aside = styled.aside`
-	// max-width: 300px;
 	min-height: 60vh;
 	margin: 30px auto;
-	@media only screen and (min-width: 320px) {
-		// padding: 0 15px;
-		// display: none;
-	}
+	margin-left: 20px;
 	@media only screen and (max-width: 1000px) {
-		// padding: 0 15px;
 		display: none;
 	}
 `;
 
 export const Frame = styled.section`
-	max-width: 752px;
+	max-width: 800px;
 	display: flex;
-	justify-content: space-between;
 	margin: 0 auto;
 `;

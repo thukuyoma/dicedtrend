@@ -1,5 +1,6 @@
 import {
 	REGISTER_SUCCESS,
+	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	USER_LOADED,
 	LOGOUT_USER,
@@ -22,13 +23,13 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register User
-export const register = (name, email, password) => async (dispatch) => {
+export const register = (values) => async (dispatch) => {
 	const config = {
 		headers: {
-			'Content-Type': 'application/json',
+			'Content-type': 'application/json',
 		},
 	};
-
+	const { password, email, name } = values;
 	const body = JSON.stringify({ name, email, password });
 	try {
 		const res = await axios.post('auth/register', body, config);
@@ -40,17 +41,25 @@ export const register = (name, email, password) => async (dispatch) => {
 		dispatch(loadUser());
 		dispatch(setAlert(`${email} registration successful`, 'success'));
 	} catch (err) {
-		throw err;
+		const errors = err.response.data.errors;
+
+		if (errors) {
+			errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+		}
+		dispatch({
+			type: AUTH_ERROR,
+		});
 	}
 };
 
 //Login User
-export const login = (email, password) => async (dispatch) => {
+export const login = (values) => async (dispatch) => {
 	const config = {
 		headers: {
 			'Content-type': 'application/json',
 		},
 	};
+	const { password, email } = values;
 	const body = JSON.stringify({ email, password });
 
 	try {
@@ -60,12 +69,19 @@ export const login = (email, password) => async (dispatch) => {
 			payload: res.data,
 		});
 		dispatch(loadUser());
+		console.log(res.data);
+		console.log(body);
 		dispatch(setAlert(`${email} has successfully logged in`, 'success'));
 	} catch (err) {
-		throw err;
+		const errors = err.response.data.errors;
+		if (errors) {
+			errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+		}
+		dispatch({
+			type: AUTH_ERROR,
+		});
 	}
 };
-
 
 //logout
 export const logout = () => (dispatch) => {
@@ -74,20 +90,37 @@ export const logout = () => (dispatch) => {
 	dispatch(setAlert('You are now logged out', 'success'));
 };
 
-
 //update profile avatar
 export const updateAvatar = (formData) => async (dispatch) => {
-	const config = {
-		headers: {
-			'Content-Type': 'multipart/form-data',
-		},
-	};
 	try {
+		const config = {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		};
 		const res = await axios('/auth/update-avatar', config, formData);
 		dispatch({ type: UPDATE_AVATAR, payload: res.data });
 		dispatch(
 			setAlert('You have successfuly updated your profile picture', 'success')
 		);
+	} catch (err) {
+		throw err;
+	}
+};
+
+//forgot password
+export const forgotPassword = (values) => async (dispatch) => {
+	const email = values.email;
+	const body = JSON.stringify({ email });
+	try {
+		const config = {
+			headers: {
+				'Content-type': 'application/json',
+			},
+		};
+		const res = await axios.put('/auth/forgot-password', body, config);
+		dispatch(setAlert(`${res.data}`, 'success'));
+		console.log(res.data);
 	} catch (err) {
 		throw err;
 	}

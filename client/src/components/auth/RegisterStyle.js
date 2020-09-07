@@ -66,6 +66,15 @@ export const RegularAuth = styled.div`
 		background-color: #e6e6e636;
 	}
 
+	.fas {
+		margin-right: 10px;
+		color: red;
+	}
+	.form-error {
+		font-size: 12px;
+		color: red;
+		text-align: left;
+	}
 	.check-area {
 		display: flex;
 		margin: 15px 0 25px 0;
@@ -77,5 +86,11 @@ export const RegularAuth = styled.div`
 			font-weight: 300;
 			text-align: left;
 		}
+	}
+	.forgot-password {
+		margin: 0;
+		text-align: center;
+		font-size: 14px;
+		margin-bottom: 10px;
 	}
 `;

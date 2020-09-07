@@ -24,15 +24,16 @@ const StyledHeroSide = styled.div`
 	.post-title {
 		grid-area: post-title;
 		margin: 0;
-		font-size: 12px;
-		font-weight: 400;
+		font-size: 14px;
+		// font-weight: 400;
 	}
 
 	.timestamp {
 		grid-area: timestamp;
 		font-size: 10px;
-		color: red;
+		color: #2196f3;
 		font-weight: 100px;
+		display: none;
 	}
 `;
 export default function PopularPost() {

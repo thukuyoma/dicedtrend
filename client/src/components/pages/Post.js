@@ -1,6 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import { getSinglePost } from '../../redux/actions/postActions';
-import { Main, Frame } from '../assets/Layout';
+import { Main } from '../assets/Layout';
 import Moment from 'react-moment';
 import Header from '../layout/navigation/Header';
 import Footer from '../layout/navigation/Footer';
@@ -84,65 +84,42 @@ function Post({ match }) {
 	return (
 		<Fragment>
 			<Header />
-			<Frame>
-				<Main>
-					<div>
-						{isLoading || post === null ? (
-							<Spinner />
-						) : (
-							<Article>
-								<div className="cat-time">
-									<span className="cat">{post.category}</span>
-									<time>
-										<Moment format="Do MM YY">{post.date}</Moment>{' '}
-									</time>
-								</div>
-								<h1 className="title">{post.title}</h1>
-								<div className="author-holder">
-									<img
-										className="author-avatar"
-										src={`/images/posts/${post.photos}`}
-										// src="https://source.unsplash.com/random/25x25"
-										alt="author avatar"
-									/>
-									<span className="author">{post.author}</span>
-								</div>
-								<div className="thumbnail">
-									<img
-										className="thumbnail"
-										// src="https://source.unsplash.com/random/580x331"
-										src={`/images/posts/${post.photos}`}
-										alt="post thrumbnail"
-									/>
-								</div>
-								<div className="social-holder">
-									{/* <div className="socials social-seen">
-										<ion-icon name="eye-outline"></ion-icon>
-										<span className="social-count">12.1k</span>
-									</div>
-									<div className="socials social-comment">
-										<ion-icon name="chatbubbles-outline"></ion-icon>
-										<span className="social-count">12.1k</span>
-									</div>
-
-									<div className="socials social-like">
-										<ion-icon name="heart-outline"></ion-icon>
-										<span className="social-count">12.1k</span>
-									</div>
-									<div className="socials social-share">
-										<ion-icon name="share-social-outline"></ion-icon>
-									</div>
-									<div className="socials social-more">
-										<ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-									</div> */}
-								</div>
-								<article>{post.article}</article>
-								<Comment comments={post.comments} postId={post._id} />
-							</Article>
-						)}
-					</div>
-				</Main>
-			</Frame>
+			<Main>
+				<div>
+					{isLoading || post === null ? (
+						<Spinner />
+					) : (
+						<Article>
+							<div className="cat-time">
+								<span className="cat">{post.category}</span>
+								<time>
+									<Moment format="Do MM YY">{post.date}</Moment>{' '}
+								</time>
+							</div>
+							<h1 className="title">{post.title}</h1>
+							<div className="author-holder">
+								<img
+									className="author-avatar"
+									src={`/images/posts/${post.photos}`}
+									// src="https://source.unsplash.com/random/25x25"
+									alt="author avatar"
+								/>
+								<span className="author">{post.author}</span>
+							</div>
+							<div className="thumbnail">
+								<img
+									className="thumbnail"
+									// src="https://source.unsplash.com/random/580x331"
+									src={`/images/posts/${post.photos}`}
+									alt="post thrumbnail"
+								/>
+							</div>
+							<article>{post.article}</article>
+							<Comment comments={post.comments} postId={post._id} />
+						</Article>
+					)}
+				</div>
+			</Main>
 			<Footer />
 		</Fragment>
 	);

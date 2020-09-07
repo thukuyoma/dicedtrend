@@ -6,13 +6,13 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		min: 6,
-		max: 255,
+		max: 100,
 	},
 	article: {
 		type: String,
 		required: true,
 		min: 50,
-		max: 3000,
+		max: 2000,
 	},
 	user: {
 		type: Schema.Types.ObjectId,
@@ -27,7 +27,7 @@ const postSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		min: 6,
-		max: 255,
+		max: 150,
 	},
 	viewCount: { type: Number },
 
@@ -63,12 +63,6 @@ const postSchema = new mongoose.Schema({
 		},
 	],
 
-	// tags: [
-	// 	{
-	// 		type: String,
-	// 		required: true,
-	// 	},
-	// ],
 	category: {
 		type: String,
 		required: true,

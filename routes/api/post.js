@@ -67,7 +67,7 @@ router.get('/:id', async (req, res) => {
 	}
 });
 
-// delete user post
+//delete user post
 router.delete(
 	'/user-posts/:post_id',
 	[checkToken, checkObjectId('post_id')],
@@ -86,6 +86,7 @@ router.delete(
 	}
 );
 
+//edit post
 router.put(
 	'/edit-post/:user_post_id',
 	[checkToken, checkObjectId('user_post_id')],

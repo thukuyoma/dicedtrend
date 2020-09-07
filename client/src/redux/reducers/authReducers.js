@@ -3,6 +3,7 @@ import {
 	LOGIN_SUCCESS,
 	USER_LOADED,
 	LOGOUT_USER,
+	AUTH_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -32,7 +33,7 @@ export default function (state = initialState, { type, payload }) {
 				user: payload,
 				isUserLoaded: true,
 			};
-
+		case AUTH_ERROR:
 		case LOGOUT_USER:
 			return {
 				...state,

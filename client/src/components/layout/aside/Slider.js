@@ -2,12 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSlider = styled.div`
-	width: 200px;
-	height: 300px;
-	background: yellow;
-	border-radius: 5px;
-	margin: 0 0 10px 0;
+	img {
+		width: 200px;
+		height: 312px;
+		background: #e6e6e6;
+		border-radius: 5px;
+	}
 `;
 export default function Slider() {
-	return <StyledSlider></StyledSlider>;
+	return (
+		<StyledSlider>
+			<img src="https://source.unsplash.com/random/200x312" />
+		</StyledSlider>
+	);
 }

@@ -6,13 +6,12 @@ import StyledLink from '../../assets/StyledLink';
 import { Button } from '../../assets/Button';
 
 export const StyledPostCard = styled.section`
-	z-index: -9;
+	text-align: justify;
+	border-bottom: 1px solid #e6e6e6;
 	.post-card-wrapper {
 		display: grid;
 		margin: 30px 0;
-		// grid-template-columns: repeat(auto-fit, minmax(304, 1fr));
 		grid-template-areas:
-			'post-avatar post-cat'
 			'post-avatar post-title'
 			'post-avatar post-social'
 			'post-avatar post-summary'
@@ -22,43 +21,32 @@ export const StyledPostCard = styled.section`
 		.post-thumbnail {
 			grid-area: post-avatar;
 			margin-right: 10px;
-			width: 130px;
+			width: 170px;
 			border-radius: 5px;
-			height: 130px;
+			height: 170px;
 		}
 		
 		.post-cat {
 			grid-area: post-cat;
-			color: #e74c3c;
+			color: #2196F3;
+			font-size: 12px;
 		}
 		.post-title {
 			grid-area: post-title;
 			margin: 0;
+			// color: #03a9f4
 		}
 
-		.delete-edit {
-			grid-area: delete-edit;
-			display: flex;
-
-			.delete-post {
-				margin-right: 20px;
-			}
-
-			.far {
-				margin-right: 5px;
-			}
-		}
 		img {
 			vertical-align: bottom;
-			margin-right: 8px;
+			margin-right: 5px;
 			width: 20px;
- 		   height: 20px;
+ 		   	height: 20px;
     		border-radius: 30px;
 		}
 		.post-author {
 			font-size: 12px;
 			margin-right: 21px;
-			// font-weight: 300;
 		}
 		.post-summary {
 			grid-area: post-summary;
@@ -67,10 +55,10 @@ export const StyledPostCard = styled.section`
 		}
 		.post-social {
 			align-items: center;
-			margin-bottom: 5px;
+			margin: 12px 0;
+			display: flex;
 		}
 		time {
-			// font-weight: 200;
 			font-size: 12px;
 			margin-right: 30px;
 		}
@@ -85,7 +73,7 @@ export const StyledPostCard = styled.section`
 		}
 		.post-thumbnail {
 			width: 124px;
-			height: 112px;
+			height: 124px;
 		}
 		.post-summary {
 			display: none;  
@@ -96,37 +84,9 @@ export const StyledPostCard = styled.section`
 			place-items: center;
 		}
 		.post-author {
-			// margin-right: 50px;
 			place-items: center;
 		}
 	}
-	
-	${(props) =>
-		props.profile &&
-		css`
-			.post-author-avatar,
-			.post-author,
-			.post-summary {
-				display: none;
-			}
-
-			@media (min-width: 320px) and (max-width: 600px) {
-				.post-thumbnail {
-					width: 124px;
-					height: 134px;
-				}
-			}
-			height: 134px;
-		`};
-
-	${(props) =>
-		props.home &&
-		css`
-			.delete-edit {
-				display: none;
-			}
-		`};
-
 `;
 
 const ProfilePostCardButton = styled(Button)`
@@ -134,6 +94,7 @@ const ProfilePostCardButton = styled(Button)`
 `;
 
 export function PostCard({ post }) {
+	const time = moment(post.date).startOf('day').fromNow();
 	return (
 		<Fragment>
 			<StyledPostCard home>
@@ -147,7 +108,6 @@ export function PostCard({ post }) {
 							/>
 						</StyledLink>
 					</div>
-					<small className="post-cat">{post.category}</small>
 					<h4 className="post-title">
 						<StyledLink to={`/posts/${post._id}`}>{post.title}</StyledLink>
 					</h4>
@@ -157,28 +117,14 @@ export function PostCard({ post }) {
 							src={`/images/profile/${post.avatar}`}
 							alt="post author avatar"
 						/>
-						<span className="post-author"> {post.author}</span>
-						<time>
-							<Moment format="Do MMM  YY">{moment.utc(post.date)}</Moment>
-						</time>
+						<span className="post-author">
+							{post.author} -{time}
+						</span>
+						<small className="post-cat">{post.category}</small>
 					</div>
 					<summary className="post-summary">
 						<StyledLink to={`/posts/${post._id}`}>{post.summary}</StyledLink>
 					</summary>
-					<div className="delete-edit">
-						<span className="delete-post">
-							<ProfilePostCardButton primary>
-								{/* <i class="far fa-trash-alt"></i> */}
-								Delete
-							</ProfilePostCardButton>
-						</span>
-						<span className="edit-post">
-							<ProfilePostCardButton primary>
-								{/* <i class="far fa-edit"></i> */}
-								Edit
-							</ProfilePostCardButton>
-						</span>
-					</div>
 				</div>
 			</StyledPostCard>
 		</Fragment>

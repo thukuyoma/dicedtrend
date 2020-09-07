@@ -32,7 +32,9 @@ export const getPosts = () => async (dispatch) => {
 		const res = await axios('posts/');
 		dispatch({ type: GET_ALL_POSTS, payload: res.data });
 	} catch (err) {
-		throw err;
+		// throw err;
+		const errors = err.response.data.errors;
+		console.log(errors);
 	}
 };
 

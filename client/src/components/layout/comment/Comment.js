@@ -2,7 +2,7 @@ import React from 'react';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 
-export default function Comment({ postId, comments }) {
+export default function Comment({ postId, comments, isAuthenticated }) {
 	return (
 		<div>
 			<h3>Comments</h3>

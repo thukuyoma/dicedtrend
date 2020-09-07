@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 const StyledHeroSide = styled.div`
-	z-index: -9;
+	width: 100%;
+	text-align: justify;
 	.hero-side-post {
 		display: grid;
 		margin-bottom: 10px;
@@ -30,12 +31,13 @@ const StyledHeroSide = styled.div`
 		grid-area: post-title;
 		margin: 0;
 		font-size: 14px;
+		// color: #2196F3;
 	}
 
 	.timestamp {
 		grid-area: timestamp;
 		font-size: 12px;
-		color: red;
+		color: #2196F3;
 		font-weight: 100px;
 	}
 

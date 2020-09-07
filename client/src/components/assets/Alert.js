@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { removeAlert } from '../../redux/actions/alertActions';
 
 const StyledALert = styled.div`
+	// position: fixed;
 	section {
 		background: #f4f4f4;
 		color: #333;
@@ -42,7 +43,7 @@ const Alert = () => {
 		alerts !== null &&
 		alerts.length > 0 &&
 		alerts.map((alert) => (
-			<Fragment key={alert.id}>
+			<Fragment key={alert.id}> 
 				<StyledALert>
 					<div className={`alert-${alert.alertType}`}>
 						<div className={`alert`}>
@@ -55,7 +56,7 @@ const Alert = () => {
 									fontWeight: 'bold',
 								}}
 							>
-								x
+								{/* x */}
 							</span>
 						</div>
 					</div>

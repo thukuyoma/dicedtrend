@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv').config();
 const checkToken = require('../../middleware/checkToken');
+const transporter = require('../../middleware/transporter');
 
 // @desc     load user on token verification
 router.get('/user', checkToken, async (req, res) => {
@@ -34,7 +35,10 @@ router.post(
 			// check if user exist
 			const { name, email, password } = req.body;
 			let user = await User.findOne({ email });
-			if (user) return res.status(400).json('User already exists');
+			if (user)
+				return res
+					.status(400)
+					.json({ errors: [{ msg: 'User with this email already exists' }] });
 
 			//has password
 			user = new User({ name, email, password });
@@ -108,6 +112,8 @@ router.post(
 		} catch (err) {
 			console.log(err);
 		}
+		// const { email, password } = req.body;
+		// res.send({ email, password });
 	}
 );
 
@@ -128,6 +134,76 @@ router.post('/update-avatar', [checkToken], async (req, res) => {
 	} catch (err) {
 		console.log(err);
 	}
-	
+});
+
+// forgot password
+router.put('/forgot-password', async (req, res) => {
+	const email = req.body.email;
+	await User.findOne({ email }, async (err, user) => {
+		if (err || !user)
+			return res.status(400).json({
+				errors: [{ msg: 'User with this email does not exist  exists' }],
+			});
+		const token = jwt.sign(
+			{ _id: user._id },
+			process.env.FORGOT_PASSWORD_SECRET,
+			{ expiresIn: '20m' }
+		);
+
+		
+		const mailContent = {
+			from: 'noreply@dicedtrend.com',
+			to: `${req.body.email}`,
+			subject: 'Password reset link',
+			html: `
+				<h1 style="color:red">Welcome</h1>
+				<p>${process.env.CLIENT_URL}/resetpassword/${token}</p>
+				<p>That was easy!</p>
+				`,
+		};
+
+
+		await user.updateOne({ resetLink: token }, (err, success) => {
+			if (err) {
+				return res.status(400).json({
+					errors: [{ msg: 'Reset password error, Please try again later' }],
+				});
+			} else {
+				transporter.sendMail(mailContent, (err, data) => {
+					if (err)
+						return res.status(400).json({
+							errors: [{ msg: 'Reset password error, Please try again later' }],
+						});
+
+					return res.json({
+						msg: 'Password reset email sent, kindly follow instruction',
+					});
+				});
+			}
+		});
+
+		
+	});
+});
+
+//reset password
+router.put('/reset-password', async (req, res) => {
+	const { resetLink, newPassword } = req.body;
+	if (resetLink) {
+		jwt.verify(
+			resetLink,
+			process.env.FORGOT_PASSWORD_SECRET,
+			(err, decoded) => {
+				if (err)
+					return res.status(400).json({
+						errors: [{ msg: 'Reset link does not exist or has expire' }],
+					});
+			}
+		);
+	} else {
+		return res.status(400).json({
+			errors: [{ msg: 'Reset password error, Please try again later' }],
+		});
+	}
 });
 module.exports = router;

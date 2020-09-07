@@ -10,6 +10,7 @@ const StyledHeroMain = styled.div`
 		.post-title {
 			margin: 0;
 			font-size: 21px;
+			// color: #2196F3;
 		}
 		.post-summary {
 			font-size: 13px;
@@ -20,6 +21,7 @@ const StyledHeroMain = styled.div`
 			width: 100%;
 			margin: 15px 0 10px 0;
 			border-radius: 5px;
+			background: red;
 		}
 		.post-legend {
 			display: flex;
@@ -28,7 +30,7 @@ const StyledHeroMain = styled.div`
 			.post-cta {
 				font-size: 13px;
 				font-weight: 300;
-				color: red;
+				color: #2196f3;
 			}
 			.post-author {
 				font-size: 13px;

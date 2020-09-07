@@ -5,30 +5,34 @@ import { LoginSection, RegularAuth } from './RegisterStyle';
 import { Main } from '../assets/Layout';
 import preloader from '../assets/preloader.gif';
 import { useSelector } from 'react-redux';
-import { login } from '../../redux/actions/authActions';
-import StyledLink from '../assets/StyledLink';
+import { forgotPassword } from '../../redux/actions/authActions';
 import useForm from './useForm';
-import loginValidation from './loginValidation';
+import forgotPasswordValidation from './forgotPasswordValidation';
 
 export default function Login() {
-	const initialState = {
-		email: '',
-		password: '',
-	};
+	const initialState = { email: '' };
 	const auth = useSelector((state) => state.auth);
+
 	const { values, errors, buttonLoading, onChange, onSubmit } = useForm(
-		login,
-		loginValidation,
+		forgotPassword,
+		forgotPasswordValidation,
 		initialState
 	);
+
 	if (auth.isAuthenticated && auth.user) return <Redirect to="/" />;
+	
 	return (
 		<Fragment>
 			<Main>
 				<LoginSection>
-					<h4 className="auth-title">Login with email</h4>
+					<h1 className="auth-title">Login with email</h1>
 					<RegularAuth>
 						<form onSubmit={onSubmit}>
+							<p>
+								Forgot password? Please enter the email address associated with
+								your account. You will recieve a password reset link via the
+								email you provided
+							</p>
 							<input
 								type="text"
 								className="input"
@@ -44,25 +48,7 @@ export default function Login() {
 									{errors.email}
 								</p>
 							)}
-							<input
-								type="password"
-								className="input"
-								placeholder="Password"
-								name="password"
-								onChange={onChange}
-								value={values.password}
-								autoComplete="off"
-							/>
-							{errors.password && (
-								<p className="form-error">
-									<i className="fas fa-exclamation-circle"></i>
-									{errors.password}
-								</p>
-							)}
 
-							<StyledLink to="/forgot-password">
-								<p className="forgot-password">Forgot password</p>
-							</StyledLink>
 							{buttonLoading ? (
 								<Button primary disabled={buttonLoading}>
 									loading
@@ -73,14 +59,6 @@ export default function Login() {
 							)}
 						</form>
 					</RegularAuth>
-					<div className="tagline">
-						<StyledLink to="/register">
-							<p>
-								Dont have an account?{' '}
-								<span style={{ color: '#e74c3c' }}>Register</span>
-							</p>
-						</StyledLink>
-					</div>
 				</LoginSection>
 			</Main>
 		</Fragment>
